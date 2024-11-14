@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
   return (
-    <div className="p-6 max-w-3xl mx-auto space-y-6">
+    <main role="main" className="p-6 max-w-3xl mx-auto space-y-6">
       <h1 className="text-3xl font-bold text-center">Privacy Policy</h1>
       <p className="text-lg">
         At Byte Meter, we respect your privacy. This Privacy Policy outlines how
@@ -25,6 +25,6 @@ export default function PrivacyPolicy() {
         </a>
         .
       </p>
-    </div>
+    </main>
   );
 }
