@@ -17,6 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bytemeter.krabhi4.in/'),
   title: 'Byte Meter - Data Usage Calculator',
   description:
     'Byte Meter is a simple tool to measure internet data usage based on speed and time. Easily calculate data consumption for streaming, browsing, and downloading.',
@@ -52,7 +53,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  themeColor: '#09090B',
 };
 
 export default function RootLayout({
