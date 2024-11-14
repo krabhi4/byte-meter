@@ -24,11 +24,12 @@ import {
 } from '@/components/ui/select';
 
 const formSchema = z.object({
-  speed: z
+  speedUnit: z
     .enum(['Kbps', 'Mbps', 'Gbps', 'KBps', 'MBps', 'GBps'])
     .default('Mbps'),
+  speed: z.number().int().positive().default(1),
   timeUnit: z.enum(['s', 'm', 'h', 'd']).default('s'),
-  time: z.number().int().positive().default(1).optional(),
+  time: z.number().int().positive().default(1),
 });
 
 const SPEED_MULTIPLIERS: Record<string, number> = {
@@ -55,9 +56,9 @@ function formatDataUsage(bytes: number): string {
 }
 
 function calculateDataUsage(values: z.infer<typeof formSchema>): string {
-  const speedBps = SPEED_MULTIPLIERS[values.speed];
-  const timeSeconds = values.time! * TIME_MULTIPLIERS[values.timeUnit];
-  const totalDataBits = speedBps * timeSeconds;
+  const speedBps = SPEED_MULTIPLIERS[values.speedUnit];
+  const timeSeconds = values.time * TIME_MULTIPLIERS[values.timeUnit];
+  const totalDataBits = speedBps * timeSeconds * values.speed;
 
   // Convert bits to bytes (1 byte = 8 bits)
   const totalDataBytes = totalDataBits / 8;
@@ -71,9 +72,10 @@ const HomeForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      speed: 'Mbps',
+      speedUnit: 'Mbps',
       timeUnit: 's',
       time: undefined,
+      speed: undefined,
     },
   });
 
@@ -92,7 +94,7 @@ const HomeForm = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <FormField
               control={form.control}
-              name="speed"
+              name="speedUnit"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Connection Speed</FormLabel>
@@ -112,6 +114,32 @@ const HomeForm = () => {
                         <SelectItem value="GBps">GBps</SelectItem>
                       </SelectContent>
                     </Select>
+                  </FormControl>
+                  <FormDescription>
+                    Speed of your internet connection.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="speed"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Connection Speed</FormLabel>
+                  <FormControl>
+                    <Input
+                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      disabled={field.disabled}
+                      value={field.value}
+                      type="number"
+                      placeholder="Connection Speed"
+                      min={1}
+                      step={1}
+                    />
                   </FormControl>
                   <FormDescription>
                     Speed of your internet connection.
@@ -152,7 +180,7 @@ const HomeForm = () => {
               control={form.control}
               name="time"
               render={({ field }) => (
-                <FormItem className="col-span-2">
+                <FormItem>
                   <FormLabel>Connection Time</FormLabel>
                   <FormControl>
                     <Input

@@ -1,38 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Byte Meter
 
-## Getting Started
+![Byte Meter Logo](https://byte-meter.vercel.app/logo.svg)
 
-First, run the development server:
+A simple and powerful tool designed to help you estimate your internet data usage by calculating data consumption based on speed and time.
+
+## Features
+
+- **Real-time Calculation**: Instantly calculate data usage based on connection speed and duration
+- **Multiple Speed Units**: Support for various speed units (Mbps, Kbps, GB/s, etc.)
+- **Flexible Time Input**: Calculate usage for seconds, minutes, hours, or days
+- **User-friendly Interface**: Clean and intuitive design for easy usage
+- **Accurate Estimates**: Precise calculations considering data overhead
+- **Export Results**: Save or share your calculations
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/krabhi4/byte-meter.git
+
+# Navigate to the project directory
+cd byte-meter
+
+# Install dependencies
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Enter your internet connection speed
+2. Select the speed unit (Mbps, Kbps, etc.)
+3. Input the duration
+4. Choose the time unit (seconds, minutes, hours, days)
+5. Click "Calculate" to see your estimated data usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```javascript
+// Example calculation
+const byteMeter = new ByteMeter();
+const result = byteMeter.calculate({
+  speed: 100,
+  speedUnit: 'Mbps',
+  time: 1,
+  timeUnit: 'hour',
+});
+```
 
-## Learn More
+## Technical Details
 
-To learn more about Next.js, take a look at the following resources:
+### Calculation Formula
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The basic formula used for calculation is:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+Data Used = Speed × Time × Unit Conversion Factor
+```
 
-## Deploy on Vercel
+For example:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 100 Mbps for 1 hour
+- = 100 Mbps × 3600 seconds
+- = 360,000 Mb = 45,000 MB = 45 GB
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Supported Units
 
-# byte-meter
+#### Speed Units
+
+- Kilobits per second (Kbps)
+- Megabits per second (Mbps)
+- Gigabits per second (Gbps)
+- Kilobytes per second (KB/s)
+- Megabytes per second (MB/s)
+- Gigabytes per second (GB/s)
+
+#### Time Units
+
+- Seconds
+- Minutes
+- Hours
+- Days
+
+## Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to all contributors who have helped shape Byte Meter
+- Inspired by the need for quick and accurate data usage estimation
+- Built with modern web technologies
+
+## Contact
+
+Project Link: [https://github.com/krabhi4/byte-meter](https://github.com/krabhi4/byte-meter)
+
+## Support
+
+If you found this project helpful, please give it a ⭐️!
+
+---
+
+Made with ❤️ by Kumar Abhishek
