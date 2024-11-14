@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: 'Byte Meter - Internet Data Usage Calculator',
     description:
       'Calculate your data usage based on internet speed and usage time with Byte Meter. Perfect for tracking streaming, downloads, and more.',
-    url: 'https://yourwebsite.com',
+    url: 'https://byte-meter.vercel.app/',
     siteName: 'Byte Meter',
     images: [
       {
