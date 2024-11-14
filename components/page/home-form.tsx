@@ -97,12 +97,15 @@ const HomeForm = () => {
               name="speedUnit"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Connection Speed</FormLabel>
+                  <FormLabel>Connection Speed Unit</FormLabel>
                   <FormControl>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Connection Speed" />
+                        <SelectTrigger
+                          aria-label="connection speed Unit"
+                          id="connection-speed-unit"
+                        >
+                          <SelectValue placeholder="Connection Speed Unit" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -116,7 +119,7 @@ const HomeForm = () => {
                     </Select>
                   </FormControl>
                   <FormDescription>
-                    Speed of your internet connection.
+                    Speed Unit of your internet connection.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -157,7 +160,10 @@ const HomeForm = () => {
                   <FormControl>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger>
+                        <SelectTrigger
+                          id="connection-time-unit"
+                          aria-label="connection time Unit"
+                        >
                           <SelectValue placeholder="Connection Time Unit" />
                         </SelectTrigger>
                       </FormControl>
