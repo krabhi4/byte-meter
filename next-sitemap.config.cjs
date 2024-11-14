@@ -1,4 +1,4 @@
-const siteUrl = 'https://byte-meter.vercel.app/';
+const siteUrl = 'https://bytemeter.krabhi4.in/';
 module.exports = {
   siteUrl,
   exclude: ['/404'],

@@ -1,6 +1,6 @@
 # Byte Meter
 
-![Byte Meter Logo](https://byte-meter.vercel.app/logo.svg)
+![Byte Meter Logo](https://bytemeter.krabhi4.in/logo.svg)
 
 A simple and powerful tool designed to help you estimate your internet data usage by calculating data consumption based on speed and time.
 
