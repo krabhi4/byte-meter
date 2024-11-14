@@ -15,9 +15,10 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '../ui/textarea';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { sendDataToSheet } from '@/hooks/sendDataToSheet';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   name: z.string().max(50),
@@ -26,8 +27,7 @@ const formSchema = z.object({
 });
 
 const ContactForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,6 +58,10 @@ const ContactForm = () => {
       }
     }
   }
+
+  useEffect(() => {
+    void router.push('/');
+  }, []);
 
   return (
     <Form {...form}>
@@ -125,7 +129,7 @@ const ContactForm = () => {
           type="submit"
           disabled={!form.formState.isValid || form.formState.isSubmitting}
         >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+          Submit
         </Button>
       </form>
     </Form>

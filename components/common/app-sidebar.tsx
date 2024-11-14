@@ -12,18 +12,22 @@ const data = [
   {
     title: 'Home',
     url: '/',
+    disabled: false,
   },
   {
     title: 'About',
     url: '/about',
+    disabled: false,
   },
   {
     title: 'Contact',
     url: '/contact',
+    disabled: true,
   },
   {
     title: 'Privacy Policy',
     url: '/privacy-policy',
+    disabled: false,
   },
 ];
 
@@ -56,7 +60,7 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         {data.map((item) => (
-          <SidebarMenuButton asChild key={item.title}>
+          <SidebarMenuButton asChild key={item.title} isActive={item.disabled}>
             <Link href={item.url} className="flex items-center justify-center">
               {item.title}
             </Link>
