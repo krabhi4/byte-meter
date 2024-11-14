@@ -19,11 +19,11 @@ const data = [
     url: '/about',
     disabled: false,
   },
-//   {
-//     title: 'Contact',
-//     url: '/contact',
-//     disabled: true,
-//   },
+  //   {
+  //     title: 'Contact',
+  //     url: '/contact',
+  //     disabled: true,
+  //   },
   {
     title: 'Privacy Policy',
     url: '/privacy-policy',
