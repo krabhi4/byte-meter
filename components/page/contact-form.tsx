@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '../ui/textarea';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { sendDataToSheet } from '@/hooks/sendDataToSheet';
 import { useRouter } from 'next/navigation';
@@ -61,7 +61,7 @@ const ContactForm = () => {
 
   useEffect(() => {
     void router.push('/');
-  }, []);
+  }, [router]);
 
   return (
     <Form {...form}>
