@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bytemeter.krabhi4.in/'),
+  metadataBase: new URL('https://bytemeter.buildvault.in/'),
   title: 'Byte Meter - Data Usage Calculator',
   description:
     'Byte Meter is a simple tool to measure internet data usage based on speed and time. Easily calculate data consumption for streaming, browsing, and downloading.',
@@ -32,15 +32,19 @@ export const metadata: Metadata = {
     'speed to data usage',
     'internet connection',
     'data usage tracker',
+    'krabhi4',
+    "krabhi4's Byte Meter",
+    "krabhi4's Byte Meter - Data Usage Calculator",
+    'Kumar Abhishek',
   ],
   authors: [{ name: 'Kumar Abhishek' }],
-  creator: 'Kumar Abhishek',
-  publisher: 'Kumar Abhishek',
+  creator: 'krabhi4',
+  publisher: 'krabhi4',
   openGraph: {
     title: 'Byte Meter - Internet Data Usage Calculator',
     description:
       'Calculate your data usage based on internet speed and usage time with Byte Meter. Perfect for tracking streaming, downloads, and more.',
-    url: 'https://bytemeter.krabhi4.in/',
+    url: 'https://bytemeter.buildvault.in/',
     siteName: 'Byte Meter',
     images: [
       {
@@ -53,6 +57,29 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  icons: [
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/apple-touch-icon.png',
+      url: '/apple-touch-icon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      href: '/favicon-32x32.png',
+      url: '/favicon-32x32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: '/favicon-16x16.png',
+      url: '/favicon-16x16.png',
+    },
+  ],
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({
