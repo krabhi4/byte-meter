@@ -1,0 +1,54 @@
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
+
+const config = [
+  { ignores: ['.next/**', 'next-env.d.ts'] },
+  ...compat.config({
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+      project: true,
+    },
+    plugins: ['@typescript-eslint'],
+    extends: [
+      'next/core-web-vitals',
+      'plugin:@typescript-eslint/recommended-type-checked',
+      'plugin:@typescript-eslint/stylistic-type-checked',
+    ],
+    rules: {
+      '@typescript-eslint/array-type': 'off',
+      '@typescript-eslint/consistent-type-definitions': 'off',
+
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
+        },
+      ],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/require-await': 'off',
+      '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-unsafe-call': 'warn',
+
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        {
+          checksVoidReturn: { attributes: false },
+        },
+      ],
+    },
+    overrides: [
+      {
+        files: ['**/*.mjs', '**/*.cjs'],
+        extends: ['plugin:@typescript-eslint/disable-type-checked'],
+      },
+    ],
+  }),
+];
+
+export default config;

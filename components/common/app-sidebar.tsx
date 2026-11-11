@@ -48,10 +48,10 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
             <text
               x="60"
               y="35"
-              font-family="Arial, sans-serif"
-              font-size="24"
+              fontFamily="Arial, sans-serif"
+              fontSize="24"
               className="dark:fill-white fill-black"
-              font-weight="bold"
+              fontWeight="bold"
             >
               Byte Meter
             </text>
